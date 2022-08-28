@@ -8,20 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var mymovies = ["anabell"]
+   
     var body: some View {
         NavigationView{
             List{
-                ForEach(mymovies,id:\.self){
+                ForEach(mymovies){
                     movie in 
-                    HStack{
-                        Image("anabell")
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 130, height: 130)
-                        
-                        Text("anabell")
+                    NavigationLink(destination: {
+                        movieinfo(ourmovie: movie)
+                    }, label: {
+                        rowview(movie:movie.moviename)
+                    })
+                       
                     }
                     
                     
@@ -32,11 +30,13 @@ struct ContentView: View {
             }.navigationTitle("movies")
         }
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
 

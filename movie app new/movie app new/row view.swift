@@ -7,14 +7,22 @@
 
 import SwiftUI
 
-struct row_view: View {
+struct rowview: View {
+    @State var movie : String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Image(movie)
+                .resizable()
+                .scaledToFit()
+                .clipShape(Circle())
+                .frame(width: 140, height: 140)
+            
+            Text(movie)
+        }
     }
 }
-
 struct row_view_Previews: PreviewProvider {
     static var previews: some View {
-        row_view()
+        rowview(movie: "")
     }
 }
